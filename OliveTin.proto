@@ -8,9 +8,10 @@ message Action {
 	string id = 1;
 	string title = 2;
 	string icon = 3;
-	bool canExec = 4;
+	string url = 4;
+	bool canExec = 5;
 
-	repeated ActionArgument arguments = 5;
+	repeated ActionArgument arguments = 6;
 }
 
 message ActionArgument {

@@ -10,6 +10,7 @@ func TestSanitizeConfig(t *testing.T) {
 
 	a := Action{
 		Title: "Mr Waffles",
+		Url:   "google.com",
 		Arguments: []ActionArgument{
 			{
 				Name: "Carrots",
@@ -35,4 +36,5 @@ func TestSanitizeConfig(t *testing.T) {
 	assert.Equal(t, "&#x1F600;", a2.Icon, "Default icon is a smiley")
 	assert.Equal(t, "Carrots", a2.Arguments[0].Title, "Arg title is set to name")
 	assert.Equal(t, "Waffle", a2.Arguments[0].Choices[0].Title, "Choice title is set to name")
+	assert.Equal(t, "google.com", a2.Url, "Url is set to google.com")
 }
