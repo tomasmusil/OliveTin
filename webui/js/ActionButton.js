@@ -19,7 +19,6 @@ class ActionButton extends window.HTMLElement {
     this.btn.title = json.title
     this.btn.onclick = () => {
       if (json.url) {
-        console.log(json.url)
         window.open(json.url)
       } else {
         console.log(json.arguments)
