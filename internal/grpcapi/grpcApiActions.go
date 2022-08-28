@@ -28,6 +28,7 @@ func actionCfgToPb(action config.Action, user *acl.AuthenticatedUser) *pb.Action
 		Id:      fmt.Sprintf("%x", md5.Sum([]byte(action.Title))),
 		Title:   action.Title,
 		Icon:    action.Icon,
+		Url:     action.Url,
 		CanExec: acl.IsAllowedExec(cfg, user, &action),
 	}
 

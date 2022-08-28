@@ -18,16 +18,21 @@ class ActionButton extends window.HTMLElement {
     this.setAttribute('role', 'none')
     this.btn.title = json.title
     this.btn.onclick = () => {
-      console.log(json.arguments)
-      if (json.arguments.length > 0) {
-        const frm = document.createElement('argument-form')
-        frm.setup(json, (args) => {
-          this.startAction(args)
-        })
-
-        document.body.appendChild(frm)
+      if (json.url) {
+        console.log(json.url)
+        window.open(json.url)
       } else {
-        this.startAction()
+        console.log(json.arguments)
+        if (json.arguments.length > 0) {
+          const frm = document.createElement('argument-form')
+          frm.setup(json, (args) => {
+            this.startAction(args)
+          })
+
+          document.body.appendChild(frm)
+        } else {
+          this.startAction()
+        }
       }
     }
 
@@ -69,9 +74,6 @@ class ActionButton extends window.HTMLElement {
 
     window.fetch(this.actionCallUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify(startActionArgs)
     }).then((res) => {
       if (res.ok) {

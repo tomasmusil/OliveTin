@@ -101,9 +101,6 @@ class ArgumentForm extends window.HTMLElement {
 
         window.fetch(window.restBaseUrl + 'ValidateArgumentType', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
           body: JSON.stringify(validateArgumentTypeArgs)
         }).then((res) => {
           if (res.ok) {
